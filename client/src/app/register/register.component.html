@@ -1,0 +1,68 @@
+<mat-card class="register-card">
+  <mat-card-title>Register</mat-card-title>
+  <mat-card-content>
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <p>
+        <mat-form-field>
+          <input type="text" matInput placeholder="First Name" formControlName="firstName">
+        </mat-form-field>
+        <mat-error *ngIf="form.get('firstName').touched && form.get('firstName').hasError('required')">
+          Last name is <strong>required</strong>
+        </mat-error>
+        <mat-error
+          *ngIf="form.get('firstName').touched && (form.get('firstName').hasError('minlength') || form.get('firstName').hasError('maxlength'))">
+          Must be between 3 and 20 characters long
+        </mat-error>
+      </p>
+      <p>
+        <mat-form-field>
+          <input type="text" matInput placeholder="Last Name" formControlName="lastName">
+        </mat-form-field>
+        <mat-error *ngIf="form.get('lastName').touched && form.get('lastName').hasError('required')">
+          Last name is <strong>required</strong>
+        </mat-error>
+        <mat-error
+          *ngIf="form.get('lastName').touched && (form.get('lastName').hasError('minlength') || form.get('lastName').hasError('maxlength'))">
+          Must be between 3 and 20 characters long
+        </mat-error>
+      </p>
+      <p>
+        <mat-form-field>
+          <input type="text" matInput placeholder="Email" formControlName="email">
+        </mat-form-field>
+        <mat-error *ngIf="form.get('email').touched && form.get('email').hasError('required')">
+          Email is <strong>required</strong>
+        </mat-error>
+        <mat-error *ngIf="form.get('email').touched && form.get('email').hasError('email')">
+          Must be a <strong>valid</strong> email
+        </mat-error>
+      </p>
+
+      <p>
+        <mat-form-field>
+          <input type="password" matInput placeholder="Password" formControlName="password">
+        </mat-form-field>
+        <mat-error *ngIf="form.get('password').touched && form.get('password').hasError('required')">
+          Password is <strong>required</strong>
+        </mat-error>
+        <mat-error *ngIf="form.get('password').touched && form.get('password').hasError('minlength')">
+          Password must be at least 6 characters
+        </mat-error>
+      </p>
+
+      <div class="button">
+        <button type="submit" mat-button>Register</button>
+      </div>
+
+    </form>
+
+    <p *ngIf="errorMessage" class="error">
+      {{ errorMessage }}
+    </p>
+
+    <p class="alert alert-success" *ngIf="isSuccessful">
+      Your registration is successful!
+    </p>
+  </mat-card-content>
+</mat-card>
+

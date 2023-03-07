@@ -1,0 +1,25 @@
+<mat-card id="map-card">
+  <mat-card-header>
+    <mat-card-subtitle class="map-card-subtitle">To find a parking space enter an address in the search box.
+      Click on the red marker of the found parking space to reserve it and initiate navigation to it.
+    </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <input type="text"
+           class="my-search-box"
+           (keydown.enter)="$event.preventDefault()"
+           placeholder="Search Location"
+           #mapSearchField/>
+    <div id="map-wrapper">
+      <google-map width="100%" height="100%" [center]="center" [zoom]="11" [options]="options">
+        <map-marker *ngIf="marker"
+                    [position]="marker.position"
+                    [label]="marker.label"
+                    [title]="marker.title"
+                    [options]="marker.options"
+                    (mapClick)="openDialog()"
+        ></map-marker>
+      </google-map>
+    </div>
+  </mat-card-content>
+</mat-card>

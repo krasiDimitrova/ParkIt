@@ -1,0 +1,33 @@
+<div id="app">
+  <mat-toolbar class="mat-toolbar-header main-menu" role="heading" color="accent">
+    <mat-toolbar-row id="app-header">
+      <img src="../assets/parkit-logo.png" id="logo">
+      <mat-nav-list class="list-horizontal">
+        <a mat-list-item routerLinkActive="active" class="nav-link" href="/login" routerLink="login"
+           *ngIf="!isLoggedIn && !router.url.includes('/login')">
+          <mat-icon>login</mat-icon>
+          <span class="nav-caption">Login</span>
+        </a>
+        <a mat-list-item href="/register" class="nav-link" routerLink="register" *ngIf="!isLoggedIn && !router.url.includes('/register')">
+          <mat-icon>app_registration</mat-icon>
+          <span class="nav-caption">Register</span>
+        </a>
+        <a mat-list-item routerLink="/login" class="nav-link" *ngIf="isLoggedIn" (click)="logout()">
+          <mat-icon>logout</mat-icon>
+          <span class="nav-caption">Logout</span>
+        </a>
+      </mat-nav-list>
+
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <div class="container" mat-app-background>
+    <router-outlet></router-outlet>
+  </div>
+
+  <div class="footer">
+    Krasimira Dimitrova @ FMI 2023
+  </div>
+
+</div>
+

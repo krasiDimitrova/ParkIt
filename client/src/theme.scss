@@ -1,0 +1,17 @@
+@use '@angular/material' as mat;
+@include mat.core();
+$green-primary: mat.define-palette(mat.$gray-palette, 50, white, 300, 600);
+$green-accent: mat.define-palette(mat.$green-palette, 900, 50, 700);
+// The warn palette is optional (defaults to red).
+$green-warn: mat.define-palette(mat.$red-palette);
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$green-theme: mat.define-light-theme((
+  color: (
+    primary: $green-primary,
+    accent: $green-accent,
+    warn: $green-warn,
+  )
+));
+
+@include mat.all-component-themes($green-theme);

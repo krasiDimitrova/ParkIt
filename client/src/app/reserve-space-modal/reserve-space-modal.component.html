@@ -1,0 +1,9 @@
+<h1 mat-dialog-title>Do you want to initialize navigation to this parking-space?</h1>
+<div mat-dialog-content>
+ The parking-space will be reserved for the next 15 minutes for you.
+  If it gets occupied while you are traveling to it a new space will be proposed to you.
+</div>
+<div mat-dialog-actions>
+  <button mat-flat-button  color="accent" (click)="close()">Close</button>
+  <button mat-flat-button color="accent" (click)="save()">Reserve and navigate</button>
+</div>
